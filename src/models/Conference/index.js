@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const ConferenceSchema = mongoose.Schema({
   name: {
     type: String,
@@ -11,6 +10,10 @@ const ConferenceSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
+  locationCity: {
+    type: String,
+    require: true,
+  },
   isEnabled: {
     type: Boolean,
     require: true,
@@ -20,9 +23,27 @@ const ConferenceSchema = mongoose.Schema({
     default: Date.now(),
   },
   createBy: {
+    id: {
+      type: String,
+      trim: true,
+      require: true,
+    },
+    name: {
+      type: String,
+      trim: true,
+      require: true,
+    },
+  },
+  time: {
     type: String,
+    trim: true,
     require: true,
   },
-  attendants: [],
+  date: {
+    type: Date,
+    require: true,
+  },
+
+  attendants: [String],
 });
 module.exports = mongoose.model("Conference", ConferenceSchema);

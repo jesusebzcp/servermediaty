@@ -17,7 +17,6 @@ router.get(
 router.put(
   "/",
   //Validation data
-  [check("id", "El id es obligatorio").not().isEmpty()],
   auth,
   conferenceController.updateConference
 );

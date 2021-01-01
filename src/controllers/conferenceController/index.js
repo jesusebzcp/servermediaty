@@ -26,14 +26,10 @@ exports.updateConference = async (req, res) => {
     return res.status(500).json({ errors: errors.array() });
   }
   try {
-    const { id } = req.body;
-    const conference = await Conference.findOneAndUpdate(
-      { _id: id },
-      req.body,
-      {
-        new: true,
-      }
-    );
+    const { _id } = req.body;
+    const conference = await Conference.findOneAndUpdate({ _id }, req.body, {
+      new: true,
+    });
 
     return res.json(conference);
   } catch (error) {
